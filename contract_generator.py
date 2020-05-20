@@ -29,56 +29,61 @@ def create_layout(app):
                     html.Div([Header_contract(app, False, False, True, False)], style={"height":"6rem"}, className = "sticky-top navbar-expand-lg"),
                     
                     html.Div(
-                        [
-                        dbc.Row(contract_gen_basic(app)),
-                        dbc.Row(contract_gen_parameter(app)),
-                        dbc.Row(contract_gen_measure(app)),
-						dbc.Row([
-							dbc.Col(
-								dcc.Upload(
-								id = 'upload-data',
-								children = html.Div([
-									'Select Contract Template to Upload'
-									],style={"font-family":"NotoSans-Regular","font-size":"1rem","text-decoration":"underline","color":"#1357DD"}),
-								style={
-									'height': '60px',
-									'lineHeight': '60px',
-									'borderWidth': '1px',
-									'borderStyle': 'dashed',
-									'borderRadius': '5px',
-									'textAlign': 'center',
-									'margin': '10px'
-									}
-								),style={"padding-top":"1rem"}, width=12),
-							]),
-						dbc.Row(dbc.Button('Generate Contract'))
+                    	html.Div(
+	                        [
+	                        contract_gen_basic(app),
+	                        contract_gen_parameter(app),
+	                        contract_gen_measure(app),
+							dbc.Row([
+								dbc.Col(
+									dcc.Upload(
+									id = 'upload-data',
+									children = html.Div([
+										'Select Contract Template to Upload'
+										],style={"font-family":"NotoSans-Regular","font-size":"1rem","text-decoration":"underline","color":"#1357DD"}),
+									style={
+										'height': '60px',
+										'lineHeight': '60px',
+										'borderWidth': '1px',
+										'borderStyle': 'dashed',
+										'borderRadius': '5px',
+										'textAlign': 'center',
+										'margin': '10px'
+										}
+									),style={"padding-top":"1rem"}, width=12),
+								]),
+							dbc.Row(dbc.Button('Generate Contract'))
 
-                                
-                        ],
-                        className="mb-3",
-                        style={"padding-left":"3rem", "padding-right":"3rem","padding-top":"1rem","padding-bottom":"0rem"},
-                    ),
+	                                
+	                        ],
+	                        className="mb-3",
+                        	style={"box-shadow":"0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05)","background-color":"#fff","padding-top":"1rem","padding-bottom":"0rem", "width":"850px", "margin":"auto"},
+                    	)
+                    )
+                    
                 ])
 
 def contract_gen_basic(app):
 	return html.Div([
 		dbc.Row([
-			dbc.Col('Plan Year'),
+			dbc.Col('Plan Year', width=7),
 			dbc.Col([
 				dbc.InputGroup([
 					dbc.Input(value = '1/1/2020'),
 					dbc.InputGroupAddon('-', addon_type = 'append'),
 					dbc.Input(value = '12/31/2020'),
-					])
-				])
-			]),
+					],size="sm")
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		dbc.Row([
 			dbc.Col("ACO's name"),
 			dbc.Col([
-				dbc.Input(value = 'ACO1')
+				dbc.Input(value = 'ACO1', bs_size="sm")
 				]),
 			]),
-		])
+		],
+		style={"padding-bottom":"40px","padding-left":"20px","padding-right":"20px"})
 
 def contract_gen_parameter(app):
 	return html.Div([
@@ -88,7 +93,7 @@ def contract_gen_parameter(app):
 				dbc.InputGroup([
 					dbc.InputGroupAddon('$', addon_type = 'prepend'),
 					dbc.Input(value = custom_input['medical cost target']['user target']), 
-					]),
+					], size="sm"),
 				])
 			]),
 		html.Hr(),
@@ -190,7 +195,8 @@ def contract_gen_parameter(app):
 					])
 				]),
 			], hidden = not custom_input['savings/losses sharing arrangement']['two side']),
-		])
+		],
+		style={"padding-left":"20px","padding-right":"20px"})
 
 def contract_gen_measure(app):
 
@@ -277,7 +283,8 @@ def contract_gen_measure(app):
 
 		]
 			)
-		])
+		],
+		style={"padding-left":"30px","padding-right":"30px"})
 
 app.layout = create_layout(app)
 
