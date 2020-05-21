@@ -711,6 +711,11 @@ def tab_result(app):
                                 ],
                                 style={"padding-top":"1rem"}
                             ),
+                            dbc.Col([dbc.DropdownMenu(
+                                label = 'Choose Version to Generate Contract',
+                                children = [dbc.DropdownMenuItem('User Defined Setting', href = '/vbc-demo/contract-generator/'),
+                                dbc.DropdownMenuItem('Recommended Setting')],
+                                )])
                             
                         ]
                     ),

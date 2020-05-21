@@ -13,11 +13,12 @@ import numpy as np
 from dash.dependencies import Input, Output, State
 
 from utils import *
+from app import app
 
 
-app = dash.Dash(__name__, url_base_pathname='/vbc-payer-demo/contract-generator/')
+# app = dash.Dash(__name__, url_base_pathname='/vbc-payer-demo/contract-generator/')
 
-server = app.server
+# server = app.server
 
 file = open('configure/input_ds.json', encoding = 'utf-8')
 custom_input = json.load(file)
@@ -26,7 +27,7 @@ df_quality = pd.read_csv("data/quality_setup.csv")
 def create_layout(app):
 	return html.Div(
                 [ 
-                    html.Div([Header_contract(app, False, False, True, False)], style={"height":"6rem"}, className = "sticky-top navbar-expand-lg"),
+                    html.Div([Header_contract(app, True, False, False, False)], style={"height":"6rem"}, className = "sticky-top navbar-expand-lg"),
                     
                     html.Div(
                     	html.Div(
@@ -297,7 +298,7 @@ def contract_gen_measure(app):
 		],
 		style={"padding-left":"20px","padding-right":"20px"})
 
-app.layout = create_layout(app)
+layout = create_layout(app)
 
 if __name__ == "__main__":
     app.run_server(host="127.0.0.1",debug=True,port=8052)

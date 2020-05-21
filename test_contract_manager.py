@@ -60,7 +60,7 @@ def create_layout(app):
 
     return html.Div(
                 [ 
-                    html.Div([Header_mgmt(app, True, False, False, False)], style={"height":"6rem"}, className = "sticky-top navbar-expand-lg"),
+                    html.Div([Header_mgmt_aco(app, True, False, False, False)], style={"height":"6rem"}, className = "sticky-top navbar-expand-lg"),
                     
                     html.Div(
                         [
@@ -548,6 +548,8 @@ def manager_card_total_cost_incurred(app):
 
 
 layout = create_layout(app)
+
+
 
 @app.callback(
     [Output('manager-col-totalcost', 'style'),
