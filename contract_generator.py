@@ -33,6 +33,7 @@ def create_layout(app):
 	                        [
 	                        contract_gen_basic(app),
 	                        contract_gen_parameter(app),
+	                        html.Div(style={"height":"20px"}),
 	                        contract_gen_measure(app),
 							dbc.Row([
 								dbc.Col(
@@ -52,13 +53,13 @@ def create_layout(app):
 										}
 									),style={"padding-top":"1rem"}, width=12),
 								]),
-							dbc.Row(dbc.Button('Generate Contract'))
+							html.Div(dbc.Button('Generate Contract', style={"text-align":"center", "background-color":"#381610", "border-radius":"10rem"}), style={"padding-bottom":"20px"})
 
 	                                
-	                        ],
-	                        className="mb-3",
-                        	style={"box-shadow":"0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05)","background-color":"#fff","padding-top":"1rem","padding-bottom":"0rem", "width":"850px", "margin":"auto"},
-                    	)
+	                        ]
+	                    ),
+                        className="mb-3",
+                    	style={"box-shadow":"0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05)","background-color":"#fff","padding":"20px","padding-bottom":"0rem", "width":"850px", "margin":"auto"},
                     )
                     
                 ])
@@ -77,10 +78,10 @@ def contract_gen_basic(app):
 			],
 			style={"padding-bottom":"10px"}),
 		dbc.Row([
-			dbc.Col("ACO's name"),
+			dbc.Col("ACO's name", width=7),
 			dbc.Col([
 				dbc.Input(value = 'ACO1', bs_size="sm")
-				]),
+				], width=5),
 			]),
 		],
 		style={"padding-bottom":"40px","padding-left":"20px","padding-right":"20px"})
@@ -88,67 +89,73 @@ def contract_gen_basic(app):
 def contract_gen_parameter(app):
 	return html.Div([
 		dbc.Row([
-			dbc.Col('Medical Cost Target PMPM'),
+			dbc.Col('Medical Cost Target PMPM', width=7),
 			dbc.Col([
 				dbc.InputGroup([
 					dbc.InputGroupAddon('$', addon_type = 'prepend'),
 					dbc.Input(value = custom_input['medical cost target']['user target']), 
 					], size="sm"),
-				])
-			]),
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		html.Hr(),
 		dbc.Row([
 			dbc.Col('Shared Savings'),
 			]),
 		dbc.Row([
-			dbc.Col('MSR (Minimum Savings Rate)'),
+			dbc.Col('MSR (Minimum Savings Rate)', width=7),
 			dbc.Col([
 				dbc.InputGroup([
 					dbc.Input(value = custom_input['savings/losses sharing arrangement']['msr']),
 					dbc.InputGroupAddon('%', addon_type = 'append'),
-					]),
-				])
-			]),
+					],size="sm"),
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		dbc.Row([
-			dbc.Col('Max Sharing % (When quality targets are met)'),
+			dbc.Col('Max Sharing % (When quality targets are met)', width=7),
 			dbc.Col([
 				dbc.InputGroup([
 					dbc.Input(value = custom_input['savings/losses sharing arrangement']['savings sharing']),
 					dbc.InputGroupAddon('%', addon_type = 'append'),
-					]),
-				])
-			]),
+					],size="sm"),
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		dbc.Row([
-			dbc.Col('Min Sharing %'),
+			dbc.Col('Min Sharing %', width=7),
 			dbc.Col([
 				dbc.InputGroup([
 					dbc.Input(value = custom_input['savings/losses sharing arrangement']['savings sharing min']),
 					dbc.InputGroupAddon('%', addon_type = 'append'),
-					]),
-				])
-			]),
+					],size="sm"),
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		dbc.Row([
-			dbc.Col('Sharing Method'),
+			dbc.Col('Sharing Method', width=7),
 			dbc.Col([
 				dcc.Dropdown(options = [{'label':'First Dollar Sharing', 'value':'First Dollar Sharing'},
 					{'label':'Second Dollar Sharing (Below MLR)', 'value':'Second Dollar Sharing (Below MLR)'}],
 					value = custom_input['savings/losses sharing arrangement']['saving sharing method'],clearable = False),
 
-				])
-			]),
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		dbc.Row([
-			dbc.Col('Shared Savings Cap'),
+			dbc.Col('Shared Savings Cap', width=7),
 			dbc.Col([
 				dbc.InputGroup([
 					dbc.Input(value = custom_input['savings/losses sharing arrangement']['savings share cap']),
 					dbc.InputGroupAddon('%', addon_type = 'append'),
-					]),
-				])
-			]),
+					],size="sm"),
+				], width=5)
+			],
+			style={"padding-bottom":"10px"}),
 		html.Div([
 			html.Hr(),
 			dbc.Row([
-				dbc.Col('Shared Losses'),
+				dbc.Col('Shared Losses', width=7),
 				]),
 			dbc.Row([
 				dbc.Col('MLR (Minimum Losses Rate)'),
@@ -156,47 +163,51 @@ def contract_gen_parameter(app):
 					dbc.InputGroup([
 						dbc.Input(value = custom_input['savings/losses sharing arrangement']['mlr']),
 						dbc.InputGroupAddon('%', addon_type = 'append'),
-						]),
-					])
-				]),
+						],size="sm"),
+					], width=5)
+				],
+				style={"padding-bottom":"10px"}),
 			dbc.Row([
-				dbc.Col('Min Sharing % (When quality targets are met)'),
+				dbc.Col('Min Sharing % (When quality targets are met)', width=7),
 				dbc.Col([
 					dbc.InputGroup([
 						dbc.Input(value = custom_input['savings/losses sharing arrangement']['losses sharing min']),
 						dbc.InputGroupAddon('%', addon_type = 'append'),
-						]),
-					])
-				]),
+						],size="sm"),
+					], width=5)
+				],
+				style={"padding-bottom":"10px"}),
 			dbc.Row([
-				dbc.Col('Max Sharing %'),
+				dbc.Col('Max Sharing %', width=7),
 				dbc.Col([
 					dbc.InputGroup([
 						dbc.Input(value = custom_input['savings/losses sharing arrangement']['losses sharing']),
 						dbc.InputGroupAddon('%', addon_type = 'append'),
-						]),
-					])
-				]),
+						],size="sm"),
+					], width=5)
+				],
+				style={"padding-bottom":"10px"}),
 			dbc.Row([
-				dbc.Col('Sharing Method'),
+				dbc.Col('Sharing Method', width=7),
 				dbc.Col([
 					dcc.Dropdown(options = [{'label':'First Dollar Sharing', 'value':'First Dollar Sharing'},
 					{'label':'Second Dollar Sharing (Below MLR)', 'value':'Second Dollar Sharing (Below MLR)'}],
 						value = custom_input['savings/losses sharing arrangement']['loss sharing method'],clearable = False),
-					])
-				]),
+					], width=5)
+				],
+				style={"padding-bottom":"10px"}),
 			dbc.Row([
-				dbc.Col('Shared Losses Cap'),
+				dbc.Col('Shared Losses Cap', width=7),
 				dbc.Col([
 					dbc.InputGroup([
 						dbc.Input(value = custom_input['savings/losses sharing arrangement']['losses share cap']),
 						dbc.InputGroupAddon('%', addon_type = 'append'),
-						]),
-					])
+						],size="sm"),
+					], width=5)
 				]),
 			], hidden = not custom_input['savings/losses sharing arrangement']['two side']),
 		],
-		style={"padding-left":"20px","padding-right":"20px"})
+		style={"padding-left":"20px","padding-right":"20px","padding-top":"20px","padding-bottom":"20px","background-color":"#f2f7ff","font-family":"NotoSans-Regular"})
 
 def contract_gen_measure(app):
 
@@ -284,7 +295,7 @@ def contract_gen_measure(app):
 		]
 			)
 		],
-		style={"padding-left":"30px","padding-right":"30px"})
+		style={"padding-left":"20px","padding-right":"20px"})
 
 app.layout = create_layout(app)
 
