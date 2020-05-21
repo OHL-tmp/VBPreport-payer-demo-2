@@ -39,21 +39,25 @@ def create_layout(app):
 		                        contract_gen_measure(app),
 		                        html.Div(style={"height":"20px"}),
 								html.Div(
-									dcc.Upload(
-										id = 'upload-data',
-										children = html.Div([
-											'Select Contract Template to Upload'
-											],style={"font-family":"NotoSans-Regular","font-size":"1rem","text-decoration":"underline","color":"#1357DD"}),
-										style={
-											'height': '60px',
-											'lineHeight': '60px',
-											'borderWidth': '1px',
-											'borderStyle': 'dashed',
-											'borderRadius': '5px',
-											'textAlign': 'center',
-											'margin': '10px'
-											}
-									),
+									[
+										html.H1("Upload Contract Template", style={"font-size":"1.25rem"}),
+										html.Hr(),
+										dcc.Upload(
+											id = 'upload-data',
+											children = html.Div([
+												'Select Contract Template to Upload'
+												],style={"font-family":"NotoSans-Regular","font-size":"1rem","text-decoration":"underline","color":"#1357DD"}),
+											style={
+												'height': '60px',
+												'lineHeight': '60px',
+												'borderWidth': '1px',
+												'borderStyle': 'dashed',
+												'borderRadius': '5px',
+												'textAlign': 'center',
+												'margin': '10px'
+												}
+										)
+									],
 									style={"padding":"20px","background-color":"#f2f7ff"}
 								),
 								html.Div(style={"height":"20px"}),
